@@ -8,7 +8,7 @@
 
   <title>Happy Birthday | ROYAL DIGITAL HUB</title>
 
-  <meta name="description" content="A beautiful luxury birthday surprise website created by ROYAL DIGITAL HUB.">
+  <meta name="description" content="A luxury birthday surprise website by ROYAL DIGITAL HUB.">
 
   <link rel="stylesheet" href="style.css">
 
@@ -16,6 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -25,13 +27,12 @@
 <div class="ambient ambient-one"></div>
 <div class="ambient ambient-two"></div>
 
-<!-- MUSIC CONTROL -->
-<button id="musicButton" class="music-button" aria-label="Toggle music">
+<button id="musicButton" class="music-button">
   ♫ <span>Music Off</span>
 </button>
 
-
 <!-- WELCOME SCREEN -->
+
 <section class="welcome-screen" id="welcomeScreen">
 
   <div class="welcome-content">
@@ -48,7 +49,7 @@
       உங்களுக்காக ஒரு அழகான Surprise காத்திருக்கிறது! ❤️
     </p>
 
-    <button class="gold-button" id="openSurprise">
+    <button type="button" class="gold-button" id="openSurprise">
       OPEN YOUR SURPRISE ✨
     </button>
 
@@ -61,13 +62,15 @@
 </section>
 
 
-<!-- MAIN BIRTHDAY PAGE -->
+<!-- MAIN CONTENT -->
+
 <main id="mainContent" class="hidden">
 
   <!-- HERO -->
+
   <section class="hero">
 
-    <div class="floating-stars">✦ &nbsp; ✧ &nbsp; ✦</div>
+    <div class="floating-stars">✦　✧　✦</div>
 
     <div class="hero-inner">
 
@@ -78,7 +81,7 @@
       <h1>Happy Birthday</h1>
 
       <h2 class="birthday-name" id="birthdayName">
-        Beautiful Soul
+        Happy Birthday
       </h2>
 
       <div class="gold-line"></div>
@@ -98,7 +101,7 @@
         <span>BEAUTIFUL YEARS</span>
       </div>
 
-      <button class="gold-button" id="celebrateButton">
+      <button type="button" class="gold-button" id="celebrateButton">
         LET'S CELEBRATE 🎉
       </button>
 
@@ -109,7 +112,8 @@
   </section>
 
 
-  <!-- CAKE SECTION -->
+  <!-- CAKE -->
+
   <section class="cake-section section">
 
     <span class="small-heading">A LITTLE MAGIC FOR YOU</span>
@@ -125,16 +129,22 @@
       <div class="cake-flame" id="cakeFlame">🔥</div>
 
       <div class="cake">
+
         <div class="cake-top"></div>
+
         <div class="cake-layer cake-layer-one"></div>
+
         <div class="cake-layer cake-layer-two"></div>
+
         <div class="cake-base"></div>
+
         <div class="cake-plate"></div>
+
       </div>
 
     </div>
 
-    <button class="gold-button" id="blowButton">
+    <button type="button" class="gold-button" id="blowButton">
       BLOW THE CANDLES 🕯️
     </button>
 
@@ -146,6 +156,7 @@
 
 
   <!-- GALLERY -->
+
   <section class="gallery-section section">
 
     <span class="small-heading">PRECIOUS MOMENTS</span>
@@ -159,26 +170,17 @@
     <div class="photo-grid">
 
       <div class="photo-card">
-        <img
-          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700"
-          alt="Birthday memory one"
-          loading="lazy">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700" alt="Birthday memory one">
         <div class="photo-caption">A Beautiful Smile ✨</div>
       </div>
 
       <div class="photo-card">
-        <img
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700"
-          alt="Birthday memory two"
-          loading="lazy">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700" alt="Birthday memory two">
         <div class="photo-caption">Special Moments ❤️</div>
       </div>
 
       <div class="photo-card">
-        <img
-          src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700"
-          alt="Birthday memory three"
-          loading="lazy">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700" alt="Birthday memory three">
         <div class="photo-caption">Forever Memories 🌹</div>
       </div>
 
@@ -191,7 +193,8 @@
   </section>
 
 
-  <!-- SPECIAL MESSAGE -->
+  <!-- MESSAGE -->
+
   <section class="message-section section">
 
     <span class="small-heading">WORDS FROM THE HEART</span>
@@ -233,7 +236,8 @@
   </section>
 
 
-  <!-- GIFT REVEAL -->
+  <!-- GIFT -->
+
   <section class="gift-section section">
 
     <span class="small-heading">ONE MORE SURPRISE</span>
@@ -244,7 +248,7 @@
       இன்னும் ஒரு Surprise இருக்கு... Open பண்ணிப் பாரு!
     </p>
 
-    <button class="gift-box" id="giftButton" aria-label="Open birthday gift">
+    <button type="button" class="gift-box" id="giftButton">
       <span class="gift-emoji">🎁</span>
       <span class="gift-label">TAP TO OPEN</span>
     </button>
@@ -269,6 +273,7 @@
 
 
   <!-- FINAL -->
+
   <section class="final-section section">
 
     <div class="final-stars">✧ ✦ ✧</div>
@@ -283,14 +288,15 @@
 
     <div class="final-heart">♡</div>
 
-    <button class="gold-button" id="finalCelebrate">
+    <button type="button" class="gold-button" id="finalCelebrate">
       CELEBRATE AGAIN 🎉
     </button>
 
   </section>
 
 
-  <!-- BRANDING -->
+  <!-- FOOTER -->
+
   <footer>
 
     <div class="footer-crown">♛</div>
@@ -317,8 +323,6 @@
   </footer>
 
 </main>
-
-<script src="script.js"></script>
 
 </body>
 </html>
