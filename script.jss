@@ -1,65 +1,46 @@
-/* ======================================
-   ROYAL DIGITAL HUB
-   LUXURY BIRTHDAY SURPRISE
-====================================== */
+// ======================================
+// ROYAL DIGITAL HUB
+// LUXURY BIRTHDAY SURPRISE
+// COMPLETE WORKING JAVASCRIPT
+// ======================================
+
 
 // CUSTOMIZE YOUR DEMO HERE
 
 const CONFIG = {
   name: "Happy Birthday",
   age: "00",
-
-  // Replace with your business WhatsApp number.
-  // Format: 919876543210
   whatsapp: "918220848715"
 };
 
 
+// ======================================
 // ELEMENTS
+// ======================================
 
 const welcomeScreen = document.getElementById("welcomeScreen");
 const mainContent = document.getElementById("mainContent");
 const openSurprise = document.getElementById("openSurprise");
 
+const musicButton = document.getElementById("musicButton");
 
-// SET NAME AND AGE
+const birthdayName = document.getElementById("birthdayName");
+const birthdayAge = document.getElementById("birthdayAge");
 
-document.getElementById("birthdayName").textContent = CONFIG.name;
-document.getElementById("birthdayAge").textContent = CONFIG.age;
+
+// ======================================
+// INITIAL SETUP
+// ======================================
+
+birthdayName.textContent = CONFIG.name;
+birthdayAge.textContent = CONFIG.age;
 
 document.getElementById("currentYear").textContent =
   new Date().getFullYear();
 
 
-// OPEN SURPRISE - FIXED
-
-openSurprise.addEventListener("click", async function () {
-
-  console.log("Surprise Button Clicked!");
-
-  welcomeScreen.classList.add("hide");
-
-  mainContent.classList.remove("hidden");
-
-  startCelebration();
-
-  try {
-    await startMusic();
-  } catch (error) {
-    console.log("Music Error:", error);
-  }
-
-  setTimeout(() => {
-    welcomeScreen.style.display = "none";
-  }, 900);
-
-});
-
-
-
 // ======================================
 // BACKGROUND MUSIC
-// Original Web Audio celebratory melody
 // ======================================
 
 let audioContext = null;
@@ -67,14 +48,32 @@ let musicTimer = null;
 let musicPlaying = false;
 let noteIndex = 0;
 
-const musicButton = document.getElementById("musicButton");
-
 const melody = [
   523.25, 659.25, 783.99, 659.25,
   587.33, 698.46, 880.00, 783.99,
   659.25, 783.99, 987.77, 880.00,
   783.99, 659.25, 523.25, 587.33
 ];
+
+
+function createAudioContext() {
+
+  if (audioContext) return audioContext;
+
+  const AudioContextClass =
+    window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    console.warn("Web Audio is not supported.");
+    return null;
+  }
+
+  audioContext = new AudioContextClass();
+
+  return audioContext;
+
+}
+
 
 function playNote(frequency) {
 
@@ -86,38 +85,37 @@ function playNote(frequency) {
   oscillator.type = "sine";
   oscillator.frequency.value = frequency;
 
-  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  const now = audioContext.currentTime;
+
+  gain.gain.setValueAtTime(0.0001, now);
+
   gain.gain.exponentialRampToValueAtTime(
     0.045,
-    audioContext.currentTime + 0.04
+    now + 0.04
   );
 
   gain.gain.exponentialRampToValueAtTime(
     0.0001,
-    audioContext.currentTime + 0.42
+    now + 0.42
   );
 
   oscillator.connect(gain);
   gain.connect(audioContext.destination);
 
-  oscillator.start();
-  oscillator.stop(audioContext.currentTime + 0.45);
+  oscillator.start(now);
+  oscillator.stop(now + 0.45);
 
 }
 
-function startMusic() {
 
-  if (!audioContext) {
-    const AudioContextClass =
-      window.AudioContext || window.webkitAudioContext;
+async function startMusic() {
 
-    if (!AudioContextClass) return;
+  const audio = createAudioContext();
 
-    audioContext = new AudioContextClass();
-  }
+  if (!audio) return;
 
-  if (audioContext.state === "suspended") {
-    audioContext.resume();
+  if (audio.state === "suspended") {
+    await audio.resume();
   }
 
   musicPlaying = true;
@@ -136,6 +134,7 @@ function startMusic() {
 
 }
 
+
 function stopMusic() {
 
   musicPlaying = false;
@@ -146,15 +145,103 @@ function stopMusic() {
 
 }
 
-musicButton.addEventListener("click", () => {
+
+musicButton.addEventListener("click", async () => {
 
   if (musicPlaying) {
     stopMusic();
   } else {
-    startMusic();
+    await startMusic();
   }
 
 });
+
+
+// ======================================
+// OPEN SURPRISE - FIXED
+// ======================================
+
+let surpriseOpened = false;
+
+openSurprise.addEventListener("click", async function () {
+
+  if (surpriseOpened) return;
+
+  surpriseOpened = true;
+
+  openSurprise.disabled = true;
+
+  // Show main birthday page
+  mainContent.classList.remove("hidden");
+
+  // Hide welcome page
+  welcomeScreen.classList.add("hide");
+
+  // Celebration
+  startCelebration();
+
+  // Start music
+  try {
+    await startMusic();
+  } catch (error) {
+    console.error("Music could not start:", error);
+  }
+
+  // Remove welcome screen after transition
+  setTimeout(() => {
+    welcomeScreen.style.display = "none";
+  }, 850);
+
+});
+
+
+// ======================================
+// CELEBRATION SOUND
+// ======================================
+
+function playCelebrationSound() {
+
+  const audio = createAudioContext();
+
+  if (!audio) return;
+
+  if (audio.state === "suspended") {
+    audio.resume();
+  }
+
+  const frequencies = [523.25, 659.25, 783.99];
+
+  frequencies.forEach((frequency, index) => {
+
+    const oscillator = audio.createOscillator();
+    const gain = audio.createGain();
+
+    oscillator.type = "triangle";
+    oscillator.frequency.value = frequency;
+
+    const start = audio.currentTime + index * 0.12;
+
+    gain.gain.setValueAtTime(0.0001, start);
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.08,
+      start + 0.03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      start + 0.35
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audio.destination);
+
+    oscillator.start(start);
+    oscillator.stop(start + 0.4);
+
+  });
+
+}
 
 
 // ======================================
@@ -173,6 +260,8 @@ blowButton.addEventListener("click", () => {
     "Your wish is on its way! ✨ உன் ஆசைகள் அனைத்தும் நிறைவேறட்டும்! ❤️";
 
   blowButton.textContent = "WISH MADE! ❤️";
+
+  blowButton.disabled = true;
 
   startCelebration();
 
@@ -202,46 +291,7 @@ giftButton.addEventListener("click", () => {
 
 
 // ======================================
-// CELEBRATION SOUND
-// ======================================
-
-function playCelebrationSound() {
-
-  if (!audioContext) return;
-
-  if (audioContext.state === "suspended") {
-    audioContext.resume();
-  }
-
-  const frequencies = [523.25, 659.25, 783.99];
-
-  frequencies.forEach((frequency, index) => {
-
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-
-    oscillator.type = "triangle";
-    oscillator.frequency.value = frequency;
-
-    const start = audioContext.currentTime + index * 0.12;
-
-    gain.gain.setValueAtTime(0.0001, start);
-    gain.gain.exponentialRampToValueAtTime(0.08, start + 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.35);
-
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-
-    oscillator.start(start);
-    oscillator.stop(start + 0.4);
-
-  });
-
-}
-
-
-// ======================================
-// CONFETTI & FIREWORKS
+// FIREWORKS & CONFETTI
 // ======================================
 
 const canvas = document.getElementById("celebrationCanvas");
@@ -250,6 +300,7 @@ const ctx = canvas.getContext("2d");
 let particles = [];
 let animationFrame = null;
 let celebrationUntil = 0;
+
 
 function resizeCanvas() {
 
@@ -261,6 +312,7 @@ function resizeCanvas() {
   ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
 }
+
 
 window.addEventListener("resize", resizeCanvas);
 
@@ -303,7 +355,12 @@ function createBurst(x, y, amount = 65) {
 
 function animateCelebration() {
 
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  ctx.clearRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight
+  );
 
   particles = particles.filter(p => p.life > 0);
 
@@ -326,7 +383,10 @@ function animateCelebration() {
 
   ctx.globalAlpha = 1;
 
-  if (Date.now() < celebrationUntil || particles.length > 0) {
+  if (
+    Date.now() < celebrationUntil ||
+    particles.length > 0
+  ) {
 
     if (Math.random() < 0.045) {
 
@@ -338,11 +398,14 @@ function animateCelebration() {
 
     }
 
-    animationFrame = requestAnimationFrame(animateCelebration);
+    animationFrame = requestAnimationFrame(
+      animateCelebration
+    );
 
   } else {
 
     cancelAnimationFrame(animationFrame);
+
     animationFrame = null;
 
   }
@@ -375,6 +438,7 @@ document.getElementById("celebrateButton")
   .addEventListener("click", () => {
 
     startCelebration();
+
     playCelebrationSound();
 
   });
@@ -384,6 +448,7 @@ document.getElementById("finalCelebrate")
   .addEventListener("click", () => {
 
     startCelebration();
+
     playCelebrationSound();
 
     window.scrollTo({
@@ -430,7 +495,17 @@ Thank you! ❤️`;
       "?text=" +
       encodeURIComponent(message);
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
   });
 
+
+// ======================================
+// WEBSITE READY
+// ======================================
+
+console.log("ROYAL DIGITAL HUB Birthday Demo Ready!");
