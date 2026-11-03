@@ -31,23 +31,30 @@ document.getElementById("currentYear").textContent =
   new Date().getFullYear();
 
 
-// OPEN SURPRISE
+// OPEN SURPRISE - FIXED
 
-openSurprise.addEventListener("click", () => {
+openSurprise.addEventListener("click", async function () {
+
+  console.log("Surprise Button Clicked!");
 
   welcomeScreen.classList.add("hide");
 
   mainContent.classList.remove("hidden");
 
-  startMusic();
-
   startCelebration();
+
+  try {
+    await startMusic();
+  } catch (error) {
+    console.log("Music Error:", error);
+  }
 
   setTimeout(() => {
     welcomeScreen.style.display = "none";
   }, 900);
 
 });
+
 
 
 // ======================================
