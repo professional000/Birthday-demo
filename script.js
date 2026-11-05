@@ -1,7 +1,7 @@
 
 /* ======================================
    BABYKALA BIRTHDAY SURPRISE
-   ROYAL DIGITAL HUB
+   ROYAL DIGITAL HUB ❤️
 ====================================== */
 
 
@@ -16,9 +16,14 @@ const gifts = [
         poem: `உறவுகள் பல இருந்தாலும்...
 அதில் தனி அன்பு கொண்ட உறவு நீ...
 
-
 என் வாழ்க்கையின் அழகான உறவு
-என் அன்பு அக்கா BABYKALA ❤️`
+என் அன்பு அக்கா BABYKALA ❤️
+
+உன் அன்பும் பாசமும்
+என்றும் எனக்குத் தேவை...
+
+நீ என்றும் மகிழ்ச்சியாக இருக்க
+மனதார வாழ்த்துகிறேன்! 🌹`
     },
 
     {
@@ -31,7 +36,11 @@ const gifts = [
 மீண்டும் மீண்டும்
 மனதில் மலரும் அழகான தருணங்கள்...
 
+உன்னுடன் இருக்கும் ஒவ்வொரு நொடியும்
+எனக்கு அழகான நினைவுதான்!
 
+இந்த அழகான நினைவுகள்
+என்றும் தொடரட்டும்! ❤️`
     },
 
     {
@@ -47,7 +56,9 @@ const gifts = [
 நிஜமாக வேண்டும்...
 
 நீங்கள் நினைத்த வாழ்க்கை
-உங்களைத் தேடி வர வேண்டும்! 🌹`
+உங்களைத் தேடி வர வேண்டும்!
+
+என்றும் சந்தோஷமாக இருங்கள்! 🌹`
     },
 
     {
@@ -72,36 +83,49 @@ Happy Birthday BABYKALA!
 
 /* ELEMENTS */
 
-const welcomeScreen = document.getElementById("welcomeScreen");
-const mainScreen = document.getElementById("mainScreen");
+const welcomeScreen =
+    document.getElementById("welcomeScreen");
 
-const giftModal = document.getElementById("giftModal");
+const mainScreen =
+    document.getElementById("mainScreen");
 
-const finalScreen = document.getElementById("finalScreen");
+const giftModal =
+    document.getElementById("giftModal");
 
-const feedbackSection = document.getElementById("feedbackSection");
+const finalScreen =
+    document.getElementById("finalScreen");
 
-const music = document.getElementById("bgMusic");
+const feedbackSection =
+    document.getElementById("feedbackSection");
 
-const giftTitle = document.getElementById("giftTitle");
-const giftPhoto = document.getElementById("giftPhoto");
-const giftPoem = document.getElementById("giftPoem");
+const music =
+    document.getElementById("bgMusic");
 
-const giftCount = document.getElementById("giftCount");
+const giftTitle =
+    document.getElementById("giftTitle");
 
-const giftBoxes = document.querySelectorAll(".gift-box");
+const giftPhoto =
+    document.getElementById("giftPhoto");
+
+const giftPoem =
+    document.getElementById("giftPoem");
+
+const giftCount =
+    document.getElementById("giftCount");
+
+const giftBoxes =
+    document.querySelectorAll(".gift-box");
 
 
 /* STATE */
 
 let openedGifts = new Set();
 
-let currentGift = null;
-
 
 /* START SURPRISE */
 
-document.getElementById("startBtn").addEventListener("click", function() {
+document.getElementById("startBtn")
+.addEventListener("click", function() {
 
     welcomeScreen.classList.add("hidden");
 
@@ -109,8 +133,15 @@ document.getElementById("startBtn").addEventListener("click", function() {
 
     music.volume = 0.45;
 
-    music.play().catch(() => {
-        console.log("Music requires browser interaction.");
+    music.play().catch(function(error) {
+
+        console.log("Music playback unavailable:", error);
+
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
 });
@@ -137,23 +168,27 @@ function openGift(index) {
 
     if (!gift) return;
 
-    currentGift = index;
-
     giftTitle.textContent = gift.title;
 
     giftPhoto.src = gift.photo;
 
     giftPhoto.alt = gift.title;
 
+    giftPhoto.onerror = function() {
+
+        console.error("Photo not found:", gift.photo);
+
+    };
+
     giftPoem.textContent = gift.poem;
 
+    const popupEmoji =
+        document.querySelector(".popup-emoji");
+
+    popupEmoji.textContent =
+        index === 3 ? "👑" : "💝";
+
     giftModal.classList.remove("hidden");
-
-    const popupEmoji = document.querySelector(".popup-emoji");
-
-    popupEmoji.textContent = index === 3 ? "👑" : "💝";
-
-    // Mark gift as opened
 
     openedGifts.add(index);
 
@@ -168,7 +203,8 @@ function updateGiftProgress() {
 
     giftBoxes.forEach(function(box, index) {
 
-        const status = box.querySelector(".gift-status");
+        const status =
+            box.querySelector(".gift-status");
 
         if (openedGifts.has(index)) {
 
@@ -192,8 +228,6 @@ function closeGift() {
 
     giftModal.classList.add("hidden");
 
-    // All gifts opened?
-
     if (openedGifts.size === 4) {
 
         setTimeout(function() {
@@ -208,34 +242,62 @@ function closeGift() {
                 behavior: "smooth"
             });
 
-        }, 350);
+        }, 300);
 
     }
 
 }
 
 
-document.getElementById("closeGift").addEventListener("click", closeGift);
+document.getElementById("closeGift")
+.addEventListener("click", closeGift);
 
-document.getElementById("backBtn").addEventListener("click", closeGift);
+
+document.getElementById("backBtn")
+.addEventListener("click", closeGift);
+
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "Escape" &&
+        !giftModal.classList.contains("hidden")
+    ) {
+
+        closeGift();
+
+    }
+
+});
 
 
 /* FLOATING HEARTS */
 
 function createHeart() {
 
-    const heartsContainer = document.getElementById("hearts");
+    const heartsContainer =
+        document.getElementById("hearts");
 
-    const heart = document.createElement("span");
+    const heart =
+        document.createElement("span");
 
     heart.className = "heart";
 
-    const emojis = ["❤️", "💕", "💖", "🌸", "✨"];
+    const emojis = [
+        "❤️",
+        "💕",
+        "💖",
+        "🌸",
+        "✨"
+    ];
 
     heart.textContent =
         emojis[Math.floor(Math.random() * emojis.length)];
 
-    heart.style.left = Math.random() * 100 + "%";
+    heart.style.left =
+        Math.random() * 100 + "%";
 
     heart.style.fontSize =
         (15 + Math.random() * 20) + "px";
@@ -254,23 +316,29 @@ setInterval(createHeart, 600);
 
 
 /* ======================================
-   FEEDBACK FORM
+   FEEDBACK SYSTEM
 ====================================== */
 
-const feedbackForm = document.getElementById("feedbackForm");
+const feedbackForm =
+    document.getElementById("feedbackForm");
 
-const submitBtn = document.getElementById("submitBtn");
+const submitBtn =
+    document.getElementById("submitBtn");
 
-const successMessage = document.getElementById("successMessage");
+const successMessage =
+    document.getElementById("successMessage");
 
 
 feedbackForm.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
+    if (!feedbackForm.reportValidity()) return;
+
     submitBtn.disabled = true;
 
-    submitBtn.textContent = "Sending Feedback... ❤️";
+    submitBtn.textContent =
+        "Sending Feedback... ❤️";
 
     document.getElementById("feedbackTime").value =
         new Date().toLocaleString("en-IN");
@@ -278,16 +346,23 @@ feedbackForm.addEventListener("submit", async function(event) {
     try {
 
         const response = await fetch(
+
             "https://formspree.io/f/xzepljrz",
+
             {
+
                 method: "POST",
 
                 body: new FormData(feedbackForm),
 
                 headers: {
+
                     "Accept": "application/json"
+
                 }
+
             }
+
         );
 
 
@@ -298,17 +373,26 @@ feedbackForm.addEventListener("submit", async function(event) {
             successMessage.classList.remove("hidden");
 
             successMessage.scrollIntoView({
+
                 behavior: "smooth",
+
                 block: "center"
+
             });
-
-        } else {
-
-            throw new Error("Feedback submission failed");
 
         }
 
-    } catch (error) {
+        else {
+
+            throw new Error("Submission failed");
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
 
         alert(
             "Feedback send ஆகவில்லை. Internet connection check செய்து மீண்டும் முயற்சி செய்யவும்."
@@ -316,7 +400,8 @@ feedbackForm.addEventListener("submit", async function(event) {
 
         submitBtn.disabled = false;
 
-        submitBtn.textContent = "Submit Feedback ❤️";
+        submitBtn.textContent =
+            "Submit Feedback ❤️";
 
     }
 
