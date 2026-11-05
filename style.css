@@ -1,4 +1,9 @@
 
+/* ======================================
+   BABYKALA BIRTHDAY WEBSITE
+   ROYAL DIGITAL HUB ❤️
+====================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +17,18 @@
     --dark: #24091f;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #21091e, #64183f, #a8326b);
+    background: linear-gradient(
+        135deg,
+        #21091e,
+        #64183f,
+        #a8326b
+    );
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
@@ -28,9 +42,11 @@ body {
 button {
     font-family: inherit;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* HEARTS */
+
+/* FLOATING HEARTS */
 
 #hearts {
     position: fixed;
@@ -53,7 +69,8 @@ button {
     }
 }
 
-/* WELCOME */
+
+/* WELCOME SCREEN */
 
 .welcome-screen {
     min-height: 100vh;
@@ -116,7 +133,11 @@ button {
     border: none;
     border-radius: 40px;
     padding: 15px 27px;
-    background: linear-gradient(45deg, #ff4c99, #ffd1e5);
+    background: linear-gradient(
+        45deg,
+        #ff4c99,
+        #ffd1e5
+    );
     color: #55112f;
     font-weight: 700;
     font-size: 15px;
@@ -135,7 +156,8 @@ button {
     color: #ffb5d5;
 }
 
-/* MAIN SCREEN */
+
+/* MAIN GIFT SCREEN */
 
 .main-screen {
     min-height: 100vh;
@@ -166,6 +188,9 @@ button {
     margin-bottom: 30px;
 }
 
+
+/* GIFT BOXES */
+
 .gift-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -188,7 +213,7 @@ button {
 }
 
 .gift-box.opened {
-    background: rgba(255, 215, 122, .15);
+    background: rgba(255,215,122,.15);
     border-color: var(--gold);
 }
 
@@ -225,13 +250,14 @@ button {
     font-weight: 600;
 }
 
-/* GIFT MODAL */
+
+/* GIFT POPUP */
 
 .gift-modal {
     position: fixed;
     inset: 0;
     z-index: 30;
-    background: rgba(10, 0, 12, .91);
+    background: rgba(10,0,12,.91);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,7 +273,11 @@ button {
     padding: 28px 20px;
     border-radius: 25px;
     border: 1px solid #ffb7d7;
-    background: linear-gradient(145deg, #721c4b, #300b2b);
+    background: linear-gradient(
+        145deg,
+        #721c4b,
+        #300b2b
+    );
     box-shadow: 0 0 40px #ff5c9a66;
     animation: appear .4s ease;
 }
@@ -299,6 +329,7 @@ button {
     font-size: 15px;
     line-height: 2.2;
 }
+
 
 /* FINAL SCREEN */
 
@@ -358,7 +389,8 @@ button {
     margin-top: 25px;
 }
 
-/* FEEDBACK */
+
+/* FEEDBACK SECTION */
 
 .feedback-section {
     padding: 55px 15px 75px;
@@ -433,6 +465,9 @@ button {
     resize: vertical;
 }
 
+
+/* STAR RATING */
+
 .rating {
     display: flex;
     flex-direction: row-reverse;
@@ -449,6 +484,7 @@ button {
     font-size: 39px;
     color: #777;
     cursor: pointer;
+    transition: .2s;
 }
 
 .rating label:hover,
@@ -465,6 +501,9 @@ button {
     opacity: .6;
     cursor: wait;
 }
+
+
+/* SUCCESS MESSAGE */
 
 .success-message {
     margin-top: 25px;
@@ -487,6 +526,7 @@ button {
     margin-top: 10px;
 }
 
+
 /* ANIMATION */
 
 @keyframes appear {
@@ -501,7 +541,8 @@ button {
     }
 }
 
-/* MOBILE */
+
+/* MOBILE RESPONSIVE */
 
 @media (max-width: 380px) {
 
@@ -519,6 +560,22 @@ button {
 
     .gift-box {
         padding: 20px 5px;
+    }
+
+    .welcome-card {
+        padding: 32px 18px;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    .gift-box h3 {
+        font-size: 14px;
+    }
+
+    .gift-box p {
+        font-size: 10px;
     }
 
 }
