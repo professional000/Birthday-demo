@@ -122,3 +122,84 @@
 
 </body>
 </html>
+<section class="feedback-section" id="feedback">
+
+    <div class="feedback-card">
+
+        <div class="feedback-icon">💌</div>
+
+        <h1>Your Feedback</h1>
+
+        <h2>BABYKALA ❤️</h2>
+
+        <p>
+            இந்த Birthday Surprise உங்களுக்கு எப்படி இருந்தது?
+            உங்களுடைய கருத்தை எங்களுடன் பகிர்ந்து கொள்ளுங்கள்.
+        </p>
+
+        <form id="feedbackForm">
+
+            <label>Your Name</label>
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>How was your experience?</label>
+
+            <div class="rating">
+                <input type="radio" name="rating" value="5" id="star5" required>
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" value="4" id="star4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" value="3" id="star3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" value="2" id="star2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" value="1" id="star1">
+                <label for="star1">★</label>
+            </div>
+
+            <label>Which Gift did you like most?</label>
+
+            <select name="favorite_gift" required>
+                <option value="">Select your favourite</option>
+                <option>Gift 01 ❤️</option>
+                <option>Gift 02 🌸</option>
+                <option>Gift 03 💌</option>
+                <option>Gift 04 👑</option>
+                <option>All Gifts 😍</option>
+            </select>
+
+            <label>Your Feedback</label>
+
+            <textarea
+                name="feedback"
+                placeholder="Write your beautiful thoughts..."
+                rows="5"
+                required
+            ></textarea>
+
+            <input type="hidden" name="website" value="BABYKALA Birthday Website">
+            <input type="hidden" name="time" id="feedbackTime">
+
+            <button type="submit" id="submitBtn">
+                Submit Feedback ❤️
+            </button>
+
+        </form>
+
+        <div id="successMessage">
+            🎉 Thank You So Much BABYKALA! ❤️
+            <p>Your feedback means a lot to us.</p>
+        </div>
+
+    </div>
+
+</section>
