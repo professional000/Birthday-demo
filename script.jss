@@ -109,3 +109,57 @@ function createHeart() {
 }
 
 setInterval(createHeart,500);
+
+const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const submitBtn = document.getElementById("submitBtn");
+    const successMessage = document.getElementById("successMessage");
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending... ❤️";
+
+    document.getElementById("feedbackTime").value =
+        new Date().toLocaleString("en-IN");
+
+    try {
+
+        const response = await fetch(
+            "https://formspree.io/f/xzepljrz",
+            {
+                method: "POST",
+                body: new FormData(feedbackForm),
+                headers: {
+                    "Accept": "application/json"
+                }
+            }
+        );
+
+        if (response.ok) {
+
+            feedbackForm.reset();
+
+            feedbackForm.style.display = "none";
+
+            successMessage.style.display = "block";
+
+        } else {
+
+            alert("Feedback send ஆகவில்லை. மீண்டும் முயற்சி செய்யவும்.");
+
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Submit Feedback ❤️";
+        }
+
+    } catch (error) {
+
+        alert("Internet connection check செய்து மீண்டும் முயற்சி செய்யவும்.");
+
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Feedback ❤️";
+    }
+
+});
