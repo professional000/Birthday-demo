@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="theme-color" content="#300d29">
-    <meta name="description" content="A special birthday surprise for BABYKALA">
+    <meta name="description" content="A Special Birthday Surprise for BABYKALA">
 
     <title>Happy Birthday BABYKALA ❤️</title>
 
@@ -20,8 +20,9 @@
 
 <body>
 
-<!-- Floating Hearts -->
+<!-- FLOATING HEARTS -->
 <div id="hearts"></div>
+
 
 <!-- WELCOME SCREEN -->
 <section class="welcome-screen" id="welcomeScreen">
@@ -40,7 +41,8 @@
 
         <p class="welcome-text">
             என் அன்பான அக்காவுக்கு...
-            உங்களுக்காக ஒரு சின்ன Surprise!
+            உங்களுக்காக ஒரு அழகான Surprise!
+            இதைத் திறந்து பாருங்கள் ❤️
         </p>
 
         <button class="main-btn" id="startBtn">
@@ -73,37 +75,63 @@
     </div>
 
 
+    <!-- FOUR GIFT BOXES -->
+
     <div class="gift-grid">
 
         <button class="gift-box" data-gift="0">
+
             <span class="gift-emoji">🎁</span>
+
             <h3>Gift 01</h3>
+
             <p>My Dear Akka ❤️</p>
+
             <small class="gift-status">Tap to Open</small>
+
         </button>
+
 
         <button class="gift-box" data-gift="1">
+
             <span class="gift-emoji">🎁</span>
+
             <h3>Gift 02</h3>
+
             <p>Beautiful Memories 🌸</p>
+
             <small class="gift-status">Tap to Open</small>
+
         </button>
+
 
         <button class="gift-box" data-gift="2">
+
             <span class="gift-emoji">🎁</span>
+
             <h3>Gift 03</h3>
+
             <p>Special Words 💌</p>
+
             <small class="gift-status">Tap to Open</small>
+
         </button>
 
+
         <button class="gift-box" data-gift="3">
+
             <span class="gift-emoji">🎁</span>
+
             <h3>Gift 04</h3>
+
             <p>Final Surprise 👑</p>
+
             <small class="gift-status">Tap to Open</small>
+
         </button>
 
     </div>
+
 
     <p class="gift-count" id="giftCount">
         0 / 4 Gifts Opened ❤️
@@ -121,14 +149,16 @@
 
         <div class="popup-emoji">💝</div>
 
-        <p class="popup-label" id="giftNumber">SPECIAL GIFT</p>
+        <p class="popup-label">SPECIAL GIFT</p>
 
         <h2 id="giftTitle"></h2>
 
         <img id="giftPhoto" src="" alt="Birthday Memory">
 
         <div class="poem-box">
+
             <p id="giftPoem"></p>
+
         </div>
 
         <button class="main-btn" id="backBtn">
@@ -147,6 +177,8 @@
 
         <div class="final-crown">👑</div>
 
+        <p class="small-title">A SPECIAL WISH FOR YOU</p>
+
         <h1>Happy Birthday!</h1>
 
         <h2>BABYKALA AKKA ❤️</h2>
@@ -164,6 +196,9 @@
             அழகான சிரிப்பு என்றும்
             மறையாமல் இருக்கட்டும்!
 
+            உங்கள் வாழ்க்கையில்
+            அன்பும், அமைதியும்,
+            சந்தோஷமும் நிறைந்திருக்கட்டும்!
         </p>
 
         <h3>Stay Happy Always Akka ❤️</h3>
@@ -189,8 +224,7 @@
         <h2>BABYKALA ❤️</h2>
 
         <p class="feedback-description">
-            இந்த Birthday Surprise உங்களுக்கு
-            எப்படி இருந்தது?
+            இந்த Birthday Surprise உங்களுக்கு எப்படி இருந்தது?
 
             உங்களுடைய அழகான கருத்துக்களை
             எங்களுடன் பகிர்ந்து கொள்ளுங்கள்.
@@ -286,6 +320,7 @@
         </form>
 
 
+        <!-- SUCCESS MESSAGE -->
         <div id="successMessage" class="success-message hidden">
 
             <div class="success-icon">🎉</div>
@@ -308,10 +343,13 @@
 
 <!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop preload="auto">
+
     <source src="song.mp3" type="audio/mpeg">
+
 </audio>
 
 
+<!-- JAVASCRIPT -->
 <script src="script.js"></script>
 
 </body>
