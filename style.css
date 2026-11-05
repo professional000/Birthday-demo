@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tiro+Tamil&display=swap');
 
 * {
     margin: 0;
@@ -6,281 +5,413 @@
     box-sizing: border-box;
 }
 
+:root {
+    --pink: #ff72ac;
+    --light-pink: #ffd3e6;
+    --gold: #ffd77a;
+    --dark: #24091f;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#250b20,#701b49,#c04475);
+    background: linear-gradient(135deg, #21091e, #64183f, #a8326b);
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
     text-align: center;
 }
 
-.welcome {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-}
-
-.welcome-content {
-    background: rgba(255,255,255,0.09);
-    border: 1px solid #ffb8d5;
-    border-radius: 25px;
-    padding: 40px 25px;
-    width: 100%;
-    max-width: 450px;
-    box-shadow: 0 0 40px #ff4f9a55;
-}
-
-.crown {
-    font-size: 65px;
-}
-
-h1 {
-    font-size: 32px;
-    color: #ffd5e7;
-    margin: 15px 0;
-}
-
-h2 {
-    color: #ffb4d5;
-    margin: 15px 0;
-}
-
-p {
-    line-height: 1.9;
+.hidden {
+    display: none !important;
 }
 
 button {
-    border: none;
-    padding: 14px 25px;
-    border-radius: 30px;
-    background: linear-gradient(45deg,#ff5b9c,#ffc1da);
-    color: #490d2d;
-    font-size: 15px;
-    font-weight: bold;
+    font-family: inherit;
     cursor: pointer;
-    margin-top: 25px;
 }
 
-button:active {
-    transform: scale(.95);
-}
+/* HEARTS */
 
-.main {
-    display: none;
-    min-height: 100vh;
-    padding: 60px 18px;
-}
-
-.subtitle {
-    color: #ffd9e9;
-    margin-bottom: 35px;
-}
-
-.gift-container {
-    max-width: 650px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 18px;
-}
-
-.gift {
-    padding: 25px 10px;
-    background: rgba(255,255,255,.12);
-    border: 1px solid #ffb6d5;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: .4s;
-}
-
-.gift:hover {
-    transform: translateY(-8px) scale(1.04);
-    background: rgba(255,255,255,.23);
-}
-
-.gift-icon {
-    font-size: 65px;
-    animation: bounce 2s infinite;
-}
-
-.gift h3 {
-    margin-top: 10px;
-    color: #ffd3e7;
-}
-
-.gift p {
-    font-size: 12px;
-}
-
-.bottom-text {
-    margin-top: 35px;
-    color: #ffd4e7;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    background: rgba(10,0,10,.9);
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.popup-card {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 25px;
-    border-radius: 25px;
-    background: linear-gradient(145deg,#701b49,#310d2d);
-    border: 1px solid #ffb6d5;
-    box-shadow: 0 0 35px #ff65a6;
-    animation: pop .5s ease;
-}
-
-.close {
-    position: absolute;
-    right: 12px;
-    top: 5px;
-    padding: 8px 13px;
-    background: transparent;
-    color: white;
-    font-size: 22px;
-}
-
-.popup-emoji {
-    font-size: 45px;
-}
-
-.popup-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin: 15px 0;
-    border: 2px solid #ffc4df;
-}
-
-#giftPoem {
-    font-family: 'Tiro Tamil',serif;
-    color: #ffe2ee;
-    white-space: pre-line;
-    font-size: 16px;
-    line-height: 2;
-    margin-top: 12px;
-}
-
-.final {
-    display: none;
-    padding: 80px 25px;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.final h2 {
-    font-size: 27px;
-}
-
-.cake {
-    font-size: 100px;
-    margin: 20px;
-}
-
-.final p {
-    max-width: 500px;
-    color: #ffe1ed;
-    font-family: 'Tiro Tamil',serif;
-}
-
-.hearts {
+#hearts {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 5;
+    overflow: hidden;
+    z-index: 20;
 }
 
 .heart {
     position: absolute;
-    bottom: -30px;
-    animation: float 7s linear forwards;
+    bottom: -40px;
+    animation: floatHeart 7s linear forwards;
 }
 
-@keyframes float {
+@keyframes floatHeart {
     to {
         transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
 }
 
-@keyframes bounce {
-    50% { transform: translateY(-8px); }
+/* WELCOME */
+
+.welcome-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
 }
 
-@keyframes pop {
-    from {
-        transform: scale(.6);
-        opacity: 0;
+.welcome-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 42px 25px;
+    border: 1px solid #ffb3d4;
+    border-radius: 28px;
+    background: rgba(255,255,255,.08);
+    box-shadow: 0 0 40px #ff65a655;
+    backdrop-filter: blur(12px);
+    animation: appear .8s ease;
+}
+
+.crown {
+    font-size: 65px;
+}
+
+.small-title {
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+.welcome-card h1 {
+    font-family: Georgia, serif;
+    color: var(--light-pink);
+    font-size: 35px;
+    margin-top: 15px;
+}
+
+.welcome-card h2 {
+    font-size: 29px;
+    color: var(--gold);
+    margin: 15px 0;
+}
+
+.line {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto;
+}
+
+.welcome-text {
+    font-family: 'Tiro Tamil', serif;
+    line-height: 2;
+    color: #ffe1ee;
+}
+
+.main-btn {
+    border: none;
+    border-radius: 40px;
+    padding: 15px 27px;
+    background: linear-gradient(45deg, #ff4c99, #ffd1e5);
+    color: #55112f;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 25px;
+    box-shadow: 0 5px 20px #ff5b9a55;
+    transition: .3s;
+}
+
+.main-btn:active {
+    transform: scale(.95);
+}
+
+.footer-text {
+    margin-top: 28px;
+    font-size: 12px;
+    color: #ffb5d5;
+}
+
+/* MAIN SCREEN */
+
+.main-screen {
+    min-height: 100vh;
+    padding: 55px 18px;
+}
+
+.section-heading span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+.section-heading h1 {
+    font-size: 29px;
+    margin: 15px 0;
+    color: #ffe0ed;
+}
+
+.section-heading h2 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    font-family: 'Tiro Tamil', serif;
+    color: #ffd9e9;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px;
+    max-width: 620px;
+    margin: auto;
+}
+
+.gift-box {
+    border: 1px solid #ffb4d4;
+    border-radius: 22px;
+    padding: 24px 8px;
+    background: rgba(255,255,255,.10);
+    color: white;
+    transition: .3s;
+}
+
+.gift-box:active {
+    transform: scale(.94);
+}
+
+.gift-box.opened {
+    background: rgba(255, 215, 122, .15);
+    border-color: var(--gold);
+}
+
+.gift-emoji {
+    display: block;
+    font-size: 59px;
+    animation: giftBounce 2s infinite;
+}
+
+@keyframes giftBounce {
+    50% {
+        transform: translateY(-8px);
     }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
-@media(max-width:400px) {
-    h1 {font-size:26px;}
-    .gift-icon {font-size:52px;}
-    .gift {padding:20px 5px;}
+.gift-box h3 {
+    color: var(--gold);
+    margin: 10px 0;
 }
 
-.feedback-section {
+.gift-box p {
+    font-size: 12px;
+}
+
+.gift-status {
+    display: block;
+    margin-top: 12px;
+    color: #ffc4dc;
+}
+
+.gift-count {
+    color: var(--gold);
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+/* GIFT MODAL */
+
+.gift-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: rgba(10, 0, 12, .91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.gift-content {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px 20px;
+    border-radius: 25px;
+    border: 1px solid #ffb7d7;
+    background: linear-gradient(145deg, #721c4b, #300b2b);
+    box-shadow: 0 0 40px #ff5c9a66;
+    animation: appear .4s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+}
+
+.popup-emoji {
+    font-size: 48px;
+}
+
+.popup-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 12px;
+}
+
+.gift-content h2 {
+    color: #ffcae0;
+    margin: 15px 0;
+}
+
+.gift-content img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 17px;
+    border: 2px solid #ffbad8;
+    background: #3d1732;
+}
+
+.poem-box {
+    padding: 18px 8px;
+}
+
+#giftPoem {
+    font-family: 'Tiro Tamil', serif;
+    color: #ffe6f0;
+    white-space: pre-line;
+    font-size: 15px;
+    line-height: 2.2;
+}
+
+/* FINAL SCREEN */
+
+.final-screen {
+    min-height: 100vh;
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
-    padding: 55px 15px;
-    background: linear-gradient(135deg,#21091c,#76234c,#bd4778);
+    align-items: center;
+}
+
+.final-card {
+    max-width: 500px;
+    width: 100%;
+    padding: 35px 23px;
+    border: 1px solid var(--gold);
+    border-radius: 25px;
+    background: rgba(255,255,255,.09);
+    box-shadow: 0 0 35px #ffb3d455;
+}
+
+.final-crown {
+    font-size: 70px;
+}
+
+.final-card h1 {
+    font-family: Georgia, serif;
+    color: var(--gold);
+    font-size: 33px;
+    margin: 15px 0;
+}
+
+.final-card h2 {
+    color: #ffc3dc;
+    font-size: 25px;
+}
+
+.birthday-cake {
+    font-size: 100px;
+    margin: 25px 0;
+}
+
+.final-card p {
+    font-family: 'Tiro Tamil', serif;
+    white-space: pre-line;
+    line-height: 2.3;
+    color: #ffe1ed;
+}
+
+.final-card h3 {
+    margin-top: 25px;
+    color: var(--gold);
+}
+
+.final-hearts {
+    font-size: 28px;
+    margin-top: 25px;
+}
+
+/* FEEDBACK */
+
+.feedback-section {
+    padding: 55px 15px 75px;
 }
 
 .feedback-card {
-    width: 100%;
     max-width: 450px;
+    width: 100%;
+    margin: auto;
     padding: 30px 22px;
     border-radius: 25px;
-    text-align: center;
-    background: rgba(255,255,255,.10);
-    border: 1px solid #ffc0dc;
-    box-shadow: 0 0 30px #ff65a655;
+    border: 1px solid #ffb6d5;
+    background: rgba(255,255,255,.09);
+    box-shadow: 0 0 35px #ff65a655;
 }
 
 .feedback-icon {
     font-size: 55px;
 }
 
+.feedback-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
 .feedback-card h1 {
+    margin: 12px 0;
     color: #ffd0e5;
 }
 
 .feedback-card h2 {
-    color: #ff9fc9;
+    color: var(--gold);
 }
 
-.feedback-card p {
-    color: #ffe5ef;
-    margin: 15px 0;
-    line-height: 1.8;
+.feedback-description {
+    white-space: pre-line;
+    font-family: 'Tiro Tamil', serif;
+    color: #ffe1ed;
+    line-height: 2;
+    margin: 20px 0;
 }
 
 .feedback-card form {
     text-align: left;
+}
+
+.feedback-card form > label {
+    display: block;
+    margin-top: 17px;
+    color: #ffe0ed;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .feedback-card input:not([type="radio"]),
@@ -288,26 +419,26 @@ button:active {
 .feedback-card select {
     width: 100%;
     padding: 14px;
-    margin: 10px 0 20px;
+    margin-top: 9px;
+    border: 1px solid #ffb4d5;
     border-radius: 12px;
-    border: 1px solid #ffb3d2;
     outline: none;
     background: #fff5fa;
-    color: #48132e;
-    font-size: 15px;
+    color: #47132d;
+    font-family: inherit;
+    font-size: 14px;
 }
 
-.feedback-card label {
-    color: #ffe0ed;
-    font-weight: 600;
+.feedback-card textarea {
+    resize: vertical;
 }
 
 .rating {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    gap: 8px;
-    margin: 18px 0 25px;
+    gap: 7px;
+    margin: 18px 0;
 }
 
 .rating input {
@@ -315,7 +446,7 @@ button:active {
 }
 
 .rating label {
-    font-size: 38px;
+    font-size: 39px;
     color: #777;
     cursor: pointer;
 }
@@ -323,26 +454,71 @@ button:active {
 .rating label:hover,
 .rating label:hover ~ label,
 .rating input:checked ~ label {
-    color: #ffcf35;
+    color: #ffd43b;
 }
 
-.feedback-card button {
+.feedback-card .main-btn {
     width: 100%;
-    padding: 16px;
-    border-radius: 30px;
-    background: linear-gradient(45deg,#ff3d88,#ffc1dc);
-    color: #54102e;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
 }
 
-#successMessage {
-    display: none;
+.main-btn:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.success-message {
     margin-top: 25px;
-    padding: 20px;
+    padding: 22px;
+    border-radius: 17px;
     background: #fff0f7;
-    color: #a01858;
-    border-radius: 15px;
-    font-weight: bold;
+    color: #8b174c;
+}
+
+.success-icon {
+    font-size: 50px;
+}
+
+.success-message h2 {
+    color: #a51b5d;
+}
+
+.success-message p {
+    line-height: 2;
+    margin-top: 10px;
+}
+
+/* ANIMATION */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 380px) {
+
+    .gift-grid {
+        gap: 10px;
+    }
+
+    .gift-emoji {
+        font-size: 48px;
+    }
+
+    .section-heading h1 {
+        font-size: 25px;
+    }
+
+    .gift-box {
+        padding: 20px 5px;
+    }
+
 }
