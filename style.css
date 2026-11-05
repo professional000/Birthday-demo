@@ -242,3 +242,107 @@ button:active {
     .gift-icon {font-size:52px;}
     .gift {padding:20px 5px;}
 }
+
+.feedback-section {
+    display: flex;
+    justify-content: center;
+    padding: 55px 15px;
+    background: linear-gradient(135deg,#21091c,#76234c,#bd4778);
+}
+
+.feedback-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 30px 22px;
+    border-radius: 25px;
+    text-align: center;
+    background: rgba(255,255,255,.10);
+    border: 1px solid #ffc0dc;
+    box-shadow: 0 0 30px #ff65a655;
+}
+
+.feedback-icon {
+    font-size: 55px;
+}
+
+.feedback-card h1 {
+    color: #ffd0e5;
+}
+
+.feedback-card h2 {
+    color: #ff9fc9;
+}
+
+.feedback-card p {
+    color: #ffe5ef;
+    margin: 15px 0;
+    line-height: 1.8;
+}
+
+.feedback-card form {
+    text-align: left;
+}
+
+.feedback-card input:not([type="radio"]),
+.feedback-card textarea,
+.feedback-card select {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0 20px;
+    border-radius: 12px;
+    border: 1px solid #ffb3d2;
+    outline: none;
+    background: #fff5fa;
+    color: #48132e;
+    font-size: 15px;
+}
+
+.feedback-card label {
+    color: #ffe0ed;
+    font-weight: 600;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 8px;
+    margin: 18px 0 25px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 38px;
+    color: #777;
+    cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label {
+    color: #ffcf35;
+}
+
+.feedback-card button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 30px;
+    background: linear-gradient(45deg,#ff3d88,#ffc1dc);
+    color: #54102e;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#successMessage {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff0f7;
+    color: #a01858;
+    border-radius: 15px;
+    font-weight: bold;
+}
