@@ -1,27 +1,44 @@
+
+/* ======================================
+   BABYKALA BIRTHDAY SURPRISE
+   ROYAL DIGITAL HUB
+====================================== */
+
+
+/* GIFT DATA */
+
 const gifts = [
-{
-    title: "My Dear Akka ❤️",
-    photo: "images/photo1.jpg",
-    poem: `உறவுகள் பல இருந்தாலும்...
+
+    {
+        title: "My Dear Akka ❤️",
+        photo: "photo1..jpg",
+
+        poem: `உறவுகள் பல இருந்தாலும்...
 அதில் தனி அன்பு கொண்ட உறவு நீ...
+
 
 என் வாழ்க்கையின் அழகான உறவு
 என் அன்பு அக்கா BABYKALA ❤️`
-},
-{
-    title: "Beautiful Memories 🌸",
-    photo: "images/photo2.jpg",
-    poem: `நினைவுகள் என்பது
+    },
+
+    {
+        title: "Beautiful Memories 🌸",
+        photo: "photo2..jpg",
+
+        poem: `நினைவுகள் என்பது
 கடந்து போன நாட்கள் அல்ல...
 
 மீண்டும் மீண்டும்
 மனதில் மலரும் அழகான தருணங்கள்...
 
-},
-{
-    title: "Special Words 💌",
-    photo: "images/photo3.jpg",
-    poem: `வாழ்க்கையில் எத்தனை மாற்றங்கள் வந்தாலும்...
+
+    },
+
+    {
+        title: "Special Words 💌",
+        photo: "photo3..jpg",
+
+        poem: `வாழ்க்கையில் எத்தனை மாற்றங்கள் வந்தாலும்...
 
 உங்கள் முகத்தில் சிரிப்பு
 என்றும் குறையக்கூடாது...
@@ -31,11 +48,13 @@ const gifts = [
 
 நீங்கள் நினைத்த வாழ்க்கை
 உங்களைத் தேடி வர வேண்டும்! 🌹`
-},
-{
-    title: "Final Surprise 👑",
-    photo: "images/photo4.jpg",
-    poem: `இன்று உங்கள் பிறந்தநாள்...
+    },
+
+    {
+        title: "Final Surprise 👑",
+        photo: "photo4..jpg",
+
+        poem: `இன்று உங்கள் பிறந்தநாள்...
 
 உங்கள் வாழ்க்கை முழுவதும்
 மகிழ்ச்சி நிறைந்திருக்கட்டும்...
@@ -43,84 +62,215 @@ const gifts = [
 ஆயிரம் ஆண்டுகள்
 ஆரோக்கியமாக வாழ வேண்டும்...
 
-Happy Birthday BABYKALA Akka!
+Happy Birthday BABYKALA!
 
 என்றும் உங்கள் அன்பு தம்பி ❤️`
-}
+    }
+
 ];
 
-function startSurprise() {
-    document.getElementById("welcome").style.display = "none";
-    document.getElementById("main").style.display = "block";
 
-    const music = document.getElementById("music");
-    music.play().catch(() => {});
-}
+/* ELEMENTS */
+
+const welcomeScreen = document.getElementById("welcomeScreen");
+const mainScreen = document.getElementById("mainScreen");
+
+const giftModal = document.getElementById("giftModal");
+
+const finalScreen = document.getElementById("finalScreen");
+
+const feedbackSection = document.getElementById("feedbackSection");
+
+const music = document.getElementById("bgMusic");
+
+const giftTitle = document.getElementById("giftTitle");
+const giftPhoto = document.getElementById("giftPhoto");
+const giftPoem = document.getElementById("giftPoem");
+
+const giftCount = document.getElementById("giftCount");
+
+const giftBoxes = document.querySelectorAll(".gift-box");
+
+
+/* STATE */
+
+let openedGifts = new Set();
+
+let currentGift = null;
+
+
+/* START SURPRISE */
+
+document.getElementById("startBtn").addEventListener("click", function() {
+
+    welcomeScreen.classList.add("hidden");
+
+    mainScreen.classList.remove("hidden");
+
+    music.volume = 0.45;
+
+    music.play().catch(() => {
+        console.log("Music requires browser interaction.");
+    });
+
+});
+
+
+/* OPEN GIFT */
+
+giftBoxes.forEach(function(box) {
+
+    box.addEventListener("click", function() {
+
+        const index = Number(this.dataset.gift);
+
+        openGift(index);
+
+    });
+
+});
+
 
 function openGift(index) {
 
     const gift = gifts[index];
 
-    document.getElementById("giftTitle").innerText = gift.title;
+    if (!gift) return;
 
-    document.getElementById("giftPhoto").src = gift.photo;
+    currentGift = index;
 
-    document.getElementById("giftPoem").innerText = gift.poem;
+    giftTitle.textContent = gift.title;
 
-    document.getElementById("popup").style.display = "flex";
+    giftPhoto.src = gift.photo;
 
-    document.querySelector(".popup-emoji").innerText = "💝";
+    giftPhoto.alt = gift.title;
 
-    if(index === 3) {
-        document.querySelector(".popup-emoji").innerText = "👑";
-    }
+    giftPoem.textContent = gift.poem;
+
+    giftModal.classList.remove("hidden");
+
+    const popupEmoji = document.querySelector(".popup-emoji");
+
+    popupEmoji.textContent = index === 3 ? "👑" : "💝";
+
+    // Mark gift as opened
+
+    openedGifts.add(index);
+
+    updateGiftProgress();
+
 }
+
+
+/* UPDATE GIFT STATUS */
+
+function updateGiftProgress() {
+
+    giftBoxes.forEach(function(box, index) {
+
+        const status = box.querySelector(".gift-status");
+
+        if (openedGifts.has(index)) {
+
+            box.classList.add("opened");
+
+            status.textContent = "✓ Opened";
+
+        }
+
+    });
+
+    giftCount.textContent =
+        openedGifts.size + " / 4 Gifts Opened ❤️";
+
+}
+
+
+/* CLOSE GIFT */
 
 function closeGift() {
 
-    document.getElementById("popup").style.display = "none";
+    giftModal.classList.add("hidden");
 
-    const opened = document.querySelectorAll(".gift");
+    // All gifts opened?
 
-    if(opened.length === 4) {
-        // Final surprise is available after opening all gifts.
+    if (openedGifts.size === 4) {
+
+        setTimeout(function() {
+
+            mainScreen.classList.add("hidden");
+
+            finalScreen.classList.remove("hidden");
+
+            feedbackSection.classList.remove("hidden");
+
+            finalScreen.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }, 350);
+
     }
+
 }
 
-// Floating hearts
+
+document.getElementById("closeGift").addEventListener("click", closeGift);
+
+document.getElementById("backBtn").addEventListener("click", closeGift);
+
+
+/* FLOATING HEARTS */
 
 function createHeart() {
 
-    const heart = document.createElement("div");
+    const heartsContainer = document.getElementById("hearts");
+
+    const heart = document.createElement("span");
 
     heart.className = "heart";
 
-    heart.innerHTML = ["❤️","💖","💕","🌸","✨"][
-        Math.floor(Math.random()*5)
-    ];
+    const emojis = ["❤️", "💕", "💖", "🌸", "✨"];
 
-    heart.style.left = Math.random()*100 + "vw";
+    heart.textContent =
+        emojis[Math.floor(Math.random() * emojis.length)];
 
-    heart.style.fontSize = (15 + Math.random()*20) + "px";
+    heart.style.left = Math.random() * 100 + "%";
 
-    document.getElementById("hearts").appendChild(heart);
+    heart.style.fontSize =
+        (15 + Math.random() * 20) + "px";
 
-    setTimeout(() => heart.remove(),7000);
+    heartsContainer.appendChild(heart);
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 7000);
+
 }
 
-setInterval(createHeart,500);
+setInterval(createHeart, 600);
+
+
+/* ======================================
+   FEEDBACK FORM
+====================================== */
 
 const feedbackForm = document.getElementById("feedbackForm");
 
-feedbackForm.addEventListener("submit", async function(e) {
+const submitBtn = document.getElementById("submitBtn");
 
-    e.preventDefault();
+const successMessage = document.getElementById("successMessage");
 
-    const submitBtn = document.getElementById("submitBtn");
-    const successMessage = document.getElementById("successMessage");
+
+feedbackForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
 
     submitBtn.disabled = true;
-    submitBtn.innerText = "Sending... ❤️";
+
+    submitBtn.textContent = "Sending Feedback... ❤️";
 
     document.getElementById("feedbackTime").value =
         new Date().toLocaleString("en-IN");
@@ -131,35 +281,46 @@ feedbackForm.addEventListener("submit", async function(e) {
             "https://formspree.io/f/xzepljrz",
             {
                 method: "POST",
+
                 body: new FormData(feedbackForm),
+
                 headers: {
                     "Accept": "application/json"
                 }
             }
         );
 
+
         if (response.ok) {
 
-            feedbackForm.reset();
+            feedbackForm.classList.add("hidden");
 
-            feedbackForm.style.display = "none";
+            successMessage.classList.remove("hidden");
 
-            successMessage.style.display = "block";
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
         } else {
 
-            alert("Feedback send ஆகவில்லை. மீண்டும் முயற்சி செய்யவும்.");
+            throw new Error("Feedback submission failed");
 
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Submit Feedback ❤️";
         }
 
     } catch (error) {
 
-        alert("Internet connection check செய்து மீண்டும் முயற்சி செய்யவும்.");
+        alert(
+            "Feedback send ஆகவில்லை. Internet connection check செய்து மீண்டும் முயற்சி செய்யவும்."
+        );
 
         submitBtn.disabled = false;
-        submitBtn.innerText = "Submit Feedback ❤️";
+
+        submitBtn.textContent = "Submit Feedback ❤️";
+
     }
 
 });
+
+
+/* END */
