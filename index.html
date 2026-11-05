@@ -1,95 +1,137 @@
+
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday BABYKALA ❤️</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#300d29">
+    <meta name="description" content="A special birthday surprise for BABYKALA">
+
+    <title>Happy Birthday BABYKALA ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tiro+Tamil&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="hearts" id="hearts"></div>
+<!-- Floating Hearts -->
+<div id="hearts"></div>
 
-<section class="welcome" id="welcome">
+<!-- WELCOME SCREEN -->
+<section class="welcome-screen" id="welcomeScreen">
 
-    <div class="welcome-content">
+    <div class="welcome-card">
+
         <div class="crown">👑</div>
 
+        <p class="small-title">A SPECIAL DAY FOR YOU</p>
+
         <h1>Happy Birthday</h1>
+
+        <h2>BABYKALA ❤️</h2>
+
+        <div class="line"></div>
+
+        <p class="welcome-text">
+            என் அன்பான அக்காவுக்கு...
+            உங்களுக்காக ஒரு சின்ன Surprise!
+        </p>
+
+        <button class="main-btn" id="startBtn">
+            Open Your Surprise 🎁
+        </button>
+
+        <p class="footer-text">Made With Love ❤️</p>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN GIFT SCREEN -->
+<section class="main-screen hidden" id="mainScreen">
+
+    <div class="section-heading">
+
+        <span>✨ A LITTLE SURPRISE ✨</span>
+
+        <h1>For My Dear Akka</h1>
+
         <h2>BABYKALA ❤️</h2>
 
         <p>
-        என் அன்பான அக்காவுக்கு...
-        ஒரு சின்ன Surprise! 🎁
+            உங்களுக்காக 4 அழகான பரிசுகள்...
+            ஒவ்வொன்றாக திறந்து பாருங்கள்!
         </p>
 
-        <button onclick="startSurprise()">
-            Open Your Surprise ❤️
-        </button>
     </div>
 
-</section>
 
-<section class="main" id="main">
+    <div class="gift-grid">
 
-    <h1>For My Beautiful Akka ❤️</h1>
-
-    <p class="subtitle">
-        உங்களுக்காக 4 அழகான நினைவுப் பரிசுகள்...
-    </p>
-
-    <div class="gift-container">
-
-        <div class="gift" onclick="openGift(0)">
-            <div class="gift-icon">🎁</div>
+        <button class="gift-box" data-gift="0">
+            <span class="gift-emoji">🎁</span>
             <h3>Gift 01</h3>
-            <p>My Love ❤️</p>
-        </div>
+            <p>My Dear Akka ❤️</p>
+            <small class="gift-status">Tap to Open</small>
+        </button>
 
-        <div class="gift" onclick="openGift(1)">
-            <div class="gift-icon">🎁</div>
+        <button class="gift-box" data-gift="1">
+            <span class="gift-emoji">🎁</span>
             <h3>Gift 02</h3>
             <p>Beautiful Memories 🌸</p>
-        </div>
+            <small class="gift-status">Tap to Open</small>
+        </button>
 
-        <div class="gift" onclick="openGift(2)">
-            <div class="gift-icon">🎁</div>
+        <button class="gift-box" data-gift="2">
+            <span class="gift-emoji">🎁</span>
             <h3>Gift 03</h3>
             <p>Special Words 💌</p>
-        </div>
+            <small class="gift-status">Tap to Open</small>
+        </button>
 
-        <div class="gift" onclick="openGift(3)">
-            <div class="gift-icon">🎁</div>
+        <button class="gift-box" data-gift="3">
+            <span class="gift-emoji">🎁</span>
             <h3>Gift 04</h3>
             <p>Final Surprise 👑</p>
-        </div>
+            <small class="gift-status">Tap to Open</small>
+        </button>
 
     </div>
 
-    <p class="bottom-text">
-        ஒவ்வொரு Gift-லும் ஒரு அழகான Surprise காத்திருக்கிறது! ❤️
+    <p class="gift-count" id="giftCount">
+        0 / 4 Gifts Opened ❤️
     </p>
 
 </section>
 
+
 <!-- GIFT POPUP -->
+<div class="gift-modal hidden" id="giftModal">
 
-<div class="popup" id="popup">
+    <div class="gift-content">
 
-    <div class="popup-card">
-
-        <button class="close" onclick="closeGift()">✕</button>
+        <button class="close-btn" id="closeGift">✕</button>
 
         <div class="popup-emoji">💝</div>
+
+        <p class="popup-label" id="giftNumber">SPECIAL GIFT</p>
 
         <h2 id="giftTitle"></h2>
 
         <img id="giftPhoto" src="" alt="Birthday Memory">
 
-        <p id="giftPoem"></p>
+        <div class="poem-box">
+            <p id="giftPoem"></p>
+        </div>
 
-        <button class="next-btn" onclick="closeGift()">
+        <button class="main-btn" id="backBtn">
             Back to Gifts ❤️
         </button>
 
@@ -97,59 +139,81 @@
 
 </div>
 
-<section class="final" id="final">
 
-    <h1>Happy Birthday</h1>
-    <h2>BABYKALA AKKA ❤️</h2>
+<!-- FINAL BIRTHDAY SCREEN -->
+<section class="final-screen hidden" id="finalScreen">
 
-    <div class="cake">🎂</div>
+    <div class="final-card">
 
-    <p>
-    உங்கள் வாழ்க்கையில் என்றும் மகிழ்ச்சி,
-    அன்பு, ஆரோக்கியம், வெற்றி
-    அனைத்தும் நிறைந்திருக்கட்டும்! ❤️
-    </p>
+        <div class="final-crown">👑</div>
 
-    <h3>With Lots of Love ❤️</h3>
+        <h1>Happy Birthday!</h1>
+
+        <h2>BABYKALA AKKA ❤️</h2>
+
+        <div class="birthday-cake">🎂</div>
+
+        <p>
+            உங்கள் வாழ்க்கையில் என்றும்
+            மகிழ்ச்சி நிறைந்திருக்கட்டும்...
+
+            உங்கள் கனவுகள் அனைத்தும்
+            நனவாகட்டும்...
+
+            உங்கள் முகத்தில் இருக்கும்
+            அழகான சிரிப்பு என்றும்
+            மறையாமல் இருக்கட்டும்!
+
+        </p>
+
+        <h3>Stay Happy Always Akka ❤️</h3>
+
+        <div class="final-hearts">💕 💖 🌹 💕</div>
+
+    </div>
 
 </section>
 
-<audio id="music" loop>
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
 
-<script src="script.js"></script>
-
-</body>
-</html>
-<section class="feedback-section" id="feedback">
+<!-- FEEDBACK SECTION -->
+<section class="feedback-section hidden" id="feedbackSection">
 
     <div class="feedback-card">
 
         <div class="feedback-icon">💌</div>
 
+        <span class="feedback-label">ONE LAST THING</span>
+
         <h1>Your Feedback</h1>
 
         <h2>BABYKALA ❤️</h2>
 
-        <p>
-            இந்த Birthday Surprise உங்களுக்கு எப்படி இருந்தது?
-            உங்களுடைய கருத்தை எங்களுடன் பகிர்ந்து கொள்ளுங்கள்.
+        <p class="feedback-description">
+            இந்த Birthday Surprise உங்களுக்கு
+            எப்படி இருந்தது?
+
+            உங்களுடைய அழகான கருத்துக்களை
+            எங்களுடன் பகிர்ந்து கொள்ளுங்கள்.
         </p>
+
 
         <form id="feedbackForm">
 
-            <label>Your Name</label>
+            <label for="userName">Your Name</label>
+
             <input
                 type="text"
+                id="userName"
                 name="name"
                 placeholder="Enter your name"
                 required
             >
 
+
             <label>How was your experience?</label>
 
             <div class="rating">
+
                 <input type="radio" name="rating" value="5" id="star5" required>
                 <label for="star5">★</label>
 
@@ -164,42 +228,91 @@
 
                 <input type="radio" name="rating" value="1" id="star1">
                 <label for="star1">★</label>
+
             </div>
 
-            <label>Which Gift did you like most?</label>
 
-            <select name="favorite_gift" required>
+            <label for="favoriteGift">
+                Which Gift did you like most?
+            </label>
+
+            <select id="favoriteGift" name="favorite_gift" required>
+
                 <option value="">Select your favourite</option>
-                <option>Gift 01 ❤️</option>
-                <option>Gift 02 🌸</option>
-                <option>Gift 03 💌</option>
-                <option>Gift 04 👑</option>
-                <option>All Gifts 😍</option>
+
+                <option value="Gift 01">Gift 01 ❤️</option>
+
+                <option value="Gift 02">Gift 02 🌸</option>
+
+                <option value="Gift 03">Gift 03 💌</option>
+
+                <option value="Gift 04">Gift 04 👑</option>
+
+                <option value="All Gifts">All Gifts 😍</option>
+
             </select>
 
-            <label>Your Feedback</label>
+
+            <label for="feedbackMessage">
+                Your Beautiful Feedback
+            </label>
 
             <textarea
+                id="feedbackMessage"
                 name="feedback"
-                placeholder="Write your beautiful thoughts..."
+                placeholder="Write your thoughts here..."
                 rows="5"
                 required
             ></textarea>
 
-            <input type="hidden" name="website" value="BABYKALA Birthday Website">
-            <input type="hidden" name="time" id="feedbackTime">
 
-            <button type="submit" id="submitBtn">
+            <input
+                type="hidden"
+                name="website"
+                value="BABYKALA Birthday Website"
+            >
+
+            <input
+                type="hidden"
+                name="time"
+                id="feedbackTime"
+            >
+
+
+            <button type="submit" id="submitBtn" class="main-btn">
                 Submit Feedback ❤️
             </button>
 
         </form>
 
-        <div id="successMessage">
-            🎉 Thank You So Much BABYKALA! ❤️
-            <p>Your feedback means a lot to us.</p>
+
+        <div id="successMessage" class="success-message hidden">
+
+            <div class="success-icon">🎉</div>
+
+            <h2>Thank You BABYKALA!</h2>
+
+            <p>
+                உங்களுடைய Feedback கிடைத்துவிட்டது!
+
+                உங்கள் அன்புக்கும் ஆதரவுக்கும்
+                மிக்க நன்றி! ❤️
+            </p>
+
         </div>
 
     </div>
 
 </section>
+
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
