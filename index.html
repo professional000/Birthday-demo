@@ -1,328 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090806">
-
-  <title>Happy Birthday | ROYAL DIGITAL HUB</title>
-
-  <meta name="description" content="A luxury birthday surprise website by ROYAL DIGITAL HUB.">
-
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday BABYKALA ❤️</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<canvas id="celebrationCanvas"></canvas>
+<div class="hearts" id="hearts"></div>
 
-<div class="ambient ambient-one"></div>
-<div class="ambient ambient-two"></div>
+<section class="welcome" id="welcome">
 
-<button id="musicButton" class="music-button">
-  ♫ <span>Music Off</span>
-</button>
+    <div class="welcome-content">
+        <div class="crown">👑</div>
 
-<!-- WELCOME SCREEN -->
+        <h1>Happy Birthday</h1>
+        <h2>BABYKALA ❤️</h2>
 
-<section class="welcome-screen" id="welcomeScreen">
+        <p>
+        என் அன்பான அக்காவுக்கு...
+        ஒரு சின்ன Surprise! 🎁
+        </p>
 
-  <div class="welcome-content">
-
-    <div class="crown">♛</div>
-
-    <span class="small-heading">A SPECIAL SURPRISE FOR YOU</span>
-
-    <h1>Something <span>Magical</span><br>Is Waiting...</h1>
-
-    <div class="gold-line"></div>
-
-    <p>
-      உங்களுக்காக ஒரு அழகான Surprise காத்திருக்கிறது! ❤️
-    </p>
-
-    <button type="button" class="gold-button" id="openSurprise">
-      OPEN YOUR SURPRISE ✨
-    </button>
-
-    <div class="welcome-footer">
-      MADE WITH LOVE · ROYAL DIGITAL HUB
+        <button onclick="startSurprise()">
+            Open Your Surprise ❤️
+        </button>
     </div>
-
-  </div>
 
 </section>
 
+<section class="main" id="main">
 
-<!-- MAIN CONTENT -->
+    <h1>For My Beautiful Akka ❤️</h1>
 
-<main id="mainContent" class="hidden">
+    <p class="subtitle">
+        உங்களுக்காக 4 அழகான நினைவுப் பரிசுகள்...
+    </p>
 
-  <!-- HERO -->
+    <div class="gift-container">
 
-  <section class="hero">
+        <div class="gift" onclick="openGift(0)">
+            <div class="gift-icon">🎁</div>
+            <h3>Gift 01</h3>
+            <p>My Love ❤️</p>
+        </div>
 
-    <div class="floating-stars">✦　✧　✦</div>
+        <div class="gift" onclick="openGift(1)">
+            <div class="gift-icon">🎁</div>
+            <h3>Gift 02</h3>
+            <p>Beautiful Memories 🌸</p>
+        </div>
 
-    <div class="hero-inner">
+        <div class="gift" onclick="openGift(2)">
+            <div class="gift-icon">🎁</div>
+            <h3>Gift 03</h3>
+            <p>Special Words 💌</p>
+        </div>
 
-      <span class="small-heading">TODAY IS ALL ABOUT YOU</span>
-
-      <div class="gold-crown">♛</div>
-
-      <h1>Happy Birthday</h1>
-
-      <h2 class="birthday-name" id="birthdayName">
-        Happy Birthday
-      </h2>
-
-      <div class="gold-line"></div>
-
-      <p class="hero-tamil">
-        இன்று உனக்கான நாள்...
-        உன் வாழ்க்கையில் மகிழ்ச்சி என்றும் நிறைந்திருக்கட்டும்! ❤️
-      </p>
-
-      <p class="hero-english">
-        May your life shine brighter with every passing year.
-      </p>
-
-      <div class="age-circle">
-        <span>CELEBRATING</span>
-        <strong id="birthdayAge">00</strong>
-        <span>BEAUTIFUL YEARS</span>
-      </div>
-
-      <button type="button" class="gold-button" id="celebrateButton">
-        LET'S CELEBRATE 🎉
-      </button>
+        <div class="gift" onclick="openGift(3)">
+            <div class="gift-icon">🎁</div>
+            <h3>Gift 04</h3>
+            <p>Final Surprise 👑</p>
+        </div>
 
     </div>
 
-    <div class="scroll-text">SCROLL TO EXPLORE ↓</div>
-
-  </section>
-
-
-  <!-- CAKE -->
-
-  <section class="cake-section section">
-
-    <span class="small-heading">A LITTLE MAGIC FOR YOU</span>
-
-    <h2>Make A <span>Wish</span> ✨</h2>
-
-    <p class="section-desc">
-      உன் மனதில் ஒரு அழகான ஆசையை நினைத்துக்கொள்...
+    <p class="bottom-text">
+        ஒவ்வொரு Gift-லும் ஒரு அழகான Surprise காத்திருக்கிறது! ❤️
     </p>
 
-    <div class="cake-container">
+</section>
 
-      <div class="cake-flame" id="cakeFlame">🔥</div>
+<!-- GIFT POPUP -->
 
-      <div class="cake">
+<div class="popup" id="popup">
 
-        <div class="cake-top"></div>
+    <div class="popup-card">
 
-        <div class="cake-layer cake-layer-one"></div>
+        <button class="close" onclick="closeGift()">✕</button>
 
-        <div class="cake-layer cake-layer-two"></div>
+        <div class="popup-emoji">💝</div>
 
-        <div class="cake-base"></div>
+        <h2 id="giftTitle"></h2>
 
-        <div class="cake-plate"></div>
+        <img id="giftPhoto" src="" alt="Birthday Memory">
 
-      </div>
+        <p id="giftPoem"></p>
+
+        <button class="next-btn" onclick="closeGift()">
+            Back to Gifts ❤️
+        </button>
 
     </div>
 
-    <button type="button" class="gold-button" id="blowButton">
-      BLOW THE CANDLES 🕯️
-    </button>
+</div>
 
-    <p id="cakeMessage" class="cake-message">
-      Make a wish and tap the button!
-    </p>
+<section class="final" id="final">
 
-  </section>
+    <h1>Happy Birthday</h1>
+    <h2>BABYKALA AKKA ❤️</h2>
 
-
-  <!-- GALLERY -->
-
-  <section class="gallery-section section">
-
-    <span class="small-heading">PRECIOUS MOMENTS</span>
-
-    <h2>Beautiful <span>Memories</span></h2>
-
-    <p class="section-desc">
-      சில நினைவுகள் என்றும் அழியாதவை... ❤️
-    </p>
-
-    <div class="photo-grid">
-
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700" alt="Birthday memory one">
-        <div class="photo-caption">A Beautiful Smile ✨</div>
-      </div>
-
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700" alt="Birthday memory two">
-        <div class="photo-caption">Special Moments ❤️</div>
-      </div>
-
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=700" alt="Birthday memory three">
-        <div class="photo-caption">Forever Memories 🌹</div>
-      </div>
-
-    </div>
-
-    <p class="gallery-note">
-      * Sample Photos – Replace with personal photos.
-    </p>
-
-  </section>
-
-
-  <!-- MESSAGE -->
-
-  <section class="message-section section">
-
-    <span class="small-heading">WORDS FROM THE HEART</span>
-
-    <div class="message-card">
-
-      <div class="quote-mark">“</div>
-
-      <h2>A Special <span>Message</span></h2>
-
-      <p class="tamil-message">
-        என் அழகான தேவதைக்கு...
-
-        உன் வாழ்க்கையின் ஒவ்வொரு நாளும்
-        மகிழ்ச்சியாலும் அன்பாலும் நிறைந்திருக்கட்டும்.
-
-        நீ நினைக்கும் எல்லா கனவுகளும்
-        ஒவ்வொன்றாக நனவாகட்டும்.
-
-        உன் முகத்தில் இருக்கும் அந்த அழகான புன்னகை
-        என்றும் மறையாமல் இருக்கட்டும்.
-
-        உனக்கான இந்த அழகான நாளில்
-        என் இதயம் நிறைந்த பிறந்தநாள் வாழ்த்துக்கள்! ❤️
-      </p>
-
-      <div class="message-divider">✦ ♡ ✦</div>
-
-      <p class="english-message">
-        You deserve all the happiness in the world.
-        Keep smiling, keep shining and never stop dreaming.
-        May this year bring endless love, success and beautiful memories.
-      </p>
-
-      <h3>With Lots Of Love ❤️</h3>
-
-    </div>
-
-  </section>
-
-
-  <!-- GIFT -->
-
-  <section class="gift-section section">
-
-    <span class="small-heading">ONE MORE SURPRISE</span>
-
-    <h2>Your Special <span>Gift</span> 🎁</h2>
-
-    <p class="section-desc">
-      இன்னும் ஒரு Surprise இருக்கு... Open பண்ணிப் பாரு!
-    </p>
-
-    <button type="button" class="gift-box" id="giftButton">
-      <span class="gift-emoji">🎁</span>
-      <span class="gift-label">TAP TO OPEN</span>
-    </button>
-
-    <div class="gift-result hidden" id="giftResult">
-
-      <div class="gift-result-icon">💖</div>
-
-      <h2>You Are <span>Special!</span></h2>
-
-      <p>
-        இந்த உலகத்தில் நீ தனித்துவமானவர்.
-        என்றும் சந்தோஷமாக இரு.
-        உன் வாழ்க்கை அழகான நினைவுகளால் நிறையட்டும்!
-      </p>
-
-      <h3>HAPPY BIRTHDAY! 🎂</h3>
-
-    </div>
-
-  </section>
-
-
-  <!-- FINAL -->
-
-  <section class="final-section section">
-
-    <div class="final-stars">✧ ✦ ✧</div>
-
-    <h2>Once Again...</h2>
-
-    <h1>Happy Birthday!</h1>
+    <div class="cake">🎂</div>
 
     <p>
-      உன் வாழ்க்கை முழுவதும் மகிழ்ச்சி மலரட்டும். ❤️
+    உங்கள் வாழ்க்கையில் என்றும் மகிழ்ச்சி,
+    அன்பு, ஆரோக்கியம், வெற்றி
+    அனைத்தும் நிறைந்திருக்கட்டும்! ❤️
     </p>
 
-    <div class="final-heart">♡</div>
+    <h3>With Lots of Love ❤️</h3>
 
-    <button type="button" class="gold-button" id="finalCelebrate">
-      CELEBRATE AGAIN 🎉
-    </button>
+</section>
 
-  </section>
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="footer-crown">♛</div>
-
-    <h2>ROYAL DIGITAL HUB</h2>
-
-    <p>We Create Websites. You Create Memories.</p>
-
-    <div class="footer-line"></div>
-
-    <a href="#order" class="order-button" id="orderButton">
-      CREATE YOUR OWN SURPRISE WEBSITE ↗
-    </a>
-
-    <p class="footer-copy">
-      © <span id="currentYear"></span> ROYAL DIGITAL HUB.
-      All Rights Reserved.
-    </p>
-
-    <p class="demo-label">
-      PREMIUM BIRTHDAY WEBSITE DEMO
-    </p>
-
-  </footer>
-
-</main>
+<script src="script.js"></script>
 
 </body>
 </html>
